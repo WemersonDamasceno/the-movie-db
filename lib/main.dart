@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_movies_db/app/utils/custom_colors.dart';
 import 'package:the_movies_db/app/views/home_page.dart';
 
 void main() {
@@ -8,13 +9,17 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'The Movies DB',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        fontFamily: "SourceSansPro",
+        primaryColor: CustomColors.tmdbDarkBlue,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: CustomColors.tmdbDarkBlue,
+          secondary: CustomColors.tmdbLighterGreen,
+        ),
       ),
       home: const HomePage(),
     );
