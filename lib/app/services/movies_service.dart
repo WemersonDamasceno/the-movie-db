@@ -3,29 +3,9 @@ import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 import 'package:the_movies_db/app/models/movie_model.dart';
 import 'package:the_movies_db/app/utils/constants.dart';
-import 'package:the_movies_db/app/utils/enums.dart';
 
 class MoviesService {
-  getMoviesByType({required int page, required MoviesType moviesType}) async {
-    Uri url = Uri.parse('${Constants.upcomingMoviesURL}&page=$page');
-
-    switch (moviesType) {
-      case MoviesType.popular:
-        url = Uri.parse('${Constants.moviesPopularURL}&page=$page');
-        break;
-      case MoviesType.topRated:
-        url = Uri.parse('${Constants.topRated}&page=$page');
-        break;
-      case MoviesType.upcoming:
-        url = Uri.parse('${Constants.upcomingMoviesURL}&page=$page');
-        break;
-      case MoviesType.nowPlaying:
-        url = Uri.parse('${Constants.nowPlaying}&page=$page');
-        break;
-      default:
-        Uri.parse('${Constants.upcomingMoviesURL}&page=$page');
-    }
-
+  getMoviesByType({required int page, required Uri url}) async {
     final response = await http.get(
       url,
       headers: {'Accept': 'application/json'},
