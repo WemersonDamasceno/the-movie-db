@@ -5,6 +5,17 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Image.asset(
+          'assets/images/tmdb_logo.JPEG',
+          height: 80,
+        ),
+      ),
+      body: const Center(
+        child: Text('Home Page'),
+      ),
+    );
   }
 }
