@@ -9,19 +9,35 @@ part of 'home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$HomeController on _HomeControllerBase, Store {
-  late final _$moviesListAtom =
-      Atom(name: '_HomeControllerBase.moviesList', context: context);
+  late final _$moviesListPrimaryAtom =
+      Atom(name: '_HomeControllerBase.moviesListPrimary', context: context);
 
   @override
-  List<MovieModel> get moviesList {
-    _$moviesListAtom.reportRead();
-    return super.moviesList;
+  List<MovieModel> get moviesListPrimary {
+    _$moviesListPrimaryAtom.reportRead();
+    return super.moviesListPrimary;
   }
 
   @override
-  set moviesList(List<MovieModel> value) {
-    _$moviesListAtom.reportWrite(value, super.moviesList, () {
-      super.moviesList = value;
+  set moviesListPrimary(List<MovieModel> value) {
+    _$moviesListPrimaryAtom.reportWrite(value, super.moviesListPrimary, () {
+      super.moviesListPrimary = value;
+    });
+  }
+
+  late final _$moviesListSecondaryAtom =
+      Atom(name: '_HomeControllerBase.moviesListSecondary', context: context);
+
+  @override
+  List<MovieModel> get moviesListSecondary {
+    _$moviesListSecondaryAtom.reportRead();
+    return super.moviesListSecondary;
+  }
+
+  @override
+  set moviesListSecondary(List<MovieModel> value) {
+    _$moviesListSecondaryAtom.reportWrite(value, super.moviesListSecondary, () {
+      super.moviesListSecondary = value;
     });
   }
 
@@ -59,10 +75,36 @@ mixin _$HomeController on _HomeControllerBase, Store {
         .run(() => super.searchMovies(query: query, page: page));
   }
 
+  late final _$_HomeControllerBaseActionController =
+      ActionController(name: '_HomeControllerBase', context: context);
+
+  @override
+  dynamic setMoviesPrimary(List<MovieModel> moviesListPopular) {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.setMoviesPrimary');
+    try {
+      return super.setMoviesPrimary(moviesListPopular);
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setMoviesSecondary(List<MovieModel> moviesListUpComing) {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.setMoviesSecondary');
+    try {
+      return super.setMoviesSecondary(moviesListUpComing);
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-moviesList: ${moviesList},
+moviesListPrimary: ${moviesListPrimary},
+moviesListSecondary: ${moviesListSecondary},
 searchMovieList: ${searchMovieList}
     ''';
   }

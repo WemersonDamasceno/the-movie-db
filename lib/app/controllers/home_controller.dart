@@ -11,9 +11,23 @@ class HomeController = _HomeControllerBase with _$HomeController;
 abstract class _HomeControllerBase with Store {
   final movieService = MoviesService();
   @observable
-  List<MovieModel> moviesList = [];
+  List<MovieModel> moviesListPrimary = [];
+  @observable
+  List<MovieModel> moviesListSecondary = [];
   @observable
   List<MovieModel> searchMovieList = [];
+
+  @action
+  setMoviesPrimary(List<MovieModel> moviesListPopular) {
+    moviesListPrimary.clear();
+    moviesListPrimary.addAll(moviesListPopular);
+  }
+
+  @action
+  setMoviesSecondary(List<MovieModel> moviesListUpComing) {
+    moviesListSecondary.clear();
+    moviesListSecondary.addAll(moviesListUpComing);
+  }
 
   @action
   getMoviesByType({required int page, required MoviesType moviesType}) async {
@@ -38,8 +52,7 @@ abstract class _HomeControllerBase with Store {
       page: page,
       url: url,
     );
-    moviesList = response['movies'];
-    return moviesList;
+    return response['movies'];
   }
 
   @action
@@ -48,7 +61,7 @@ abstract class _HomeControllerBase with Store {
       query: query,
       page: page,
     );
-    searchMovieList = response['movies'];
+    searchMovieList.addAll(response['movies']);
     return searchMovieList;
   }
 }
