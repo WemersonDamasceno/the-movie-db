@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:the_movies_db/app/utils/custom_colors.dart';
-import 'package:the_movies_db/app/views/home_page.dart';
+import 'package:the_movies_db/app/views/home/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +22,13 @@ class MyApp extends StatelessWidget {
           secondary: CustomColors.tmdbLighterGreen,
         ),
       ),
+      localizationsDelegates: const [
+        GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale("pt", "BR"),
+      ],
       home: const HomePage(),
     );
   }

@@ -7,6 +7,7 @@ class CustomColors {
   static const tmdbLighterGreen = Color.fromRGBO(30, 213, 169, 1);
   static const tmdbLogoGreen = Color.fromRGBO(144, 206, 161, 1);
   static const accountBlue = Color.fromRGBO(1, 119, 210, 1);
+  static const tmdbGrey = Color.fromRGBO(94, 94, 94, 0.973);
 
   static const tmdbGradiente = LinearGradient(
     begin: Alignment.topLeft,
