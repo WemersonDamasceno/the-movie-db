@@ -3,4 +3,5 @@ enum MoviesType {
   topRated,
   upcoming,
   nowPlaying,
+  trending,
 }

@@ -14,7 +14,7 @@ void main() {
         page: 1,
         moviesType: MoviesType.popular,
       );
-      expect(homeController.moviesList.isNotEmpty, true);
+      expect(homeController.moviesListPrimary.isNotEmpty, true);
     });
   });
 }
