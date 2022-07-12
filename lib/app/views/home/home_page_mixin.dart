@@ -1,8 +1,12 @@
 class HomePageMixin {
-  formatterMovieTitle(String title) {
-    if (title.length > 16) {
-      return title.substring(0, 17) + '...';
+  formatterTitle(String title) {
+    if (title.length > 15) {
+      return title.substring(0, 15) + '...';
     }
     return title;
+  }
+
+  formatterVoteAverage(double voteAverage) {
+    return int.parse((voteAverage * 10).toStringAsFixed(0));
   }
 }

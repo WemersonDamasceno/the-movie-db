@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:the_movies_db/app/controllers/home_controller.dart';
-import 'package:the_movies_db/app/utils/custom_colors.dart';
-import 'package:the_movies_db/app/utils/date_formatter.dart';
 import 'package:the_movies_db/app/utils/enums.dart';
-import 'package:the_movies_db/app/views/home/home_page_mixin.dart';
+import 'package:the_movies_db/app/views/home/widgets/list_movies_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,7 +11,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with HomePageMixin {
+class _HomePageState extends State<HomePage> {
   final homeController = HomeController();
 
   @override
@@ -38,136 +37,61 @@ class _HomePageState extends State<HomePage> with HomePageMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Image.asset(
-          'assets/images/tmdb_logo.JPEG',
-          height: 80,
-        ),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Os mais populares',
-                style: TextStyle(
-                  fontSize: 24,
-                ),
-              ),
-              const SizedBox(height: 20),
-              SizedBox(
-                width: 150,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 250,
-                      width: 150,
-                      child: Stack(
+      body: NestedScrollView(
+        floatHeaderSlivers: true,
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          SliverAppBar(
+            title: Image.asset(
+              'assets/images/tmdb_logo.JPEG',
+              height: 80,
+            ),
+            centerTitle: true,
+            floating: true,
+          )
+        ],
+        body: ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Observer(builder: (_) {
+                return homeController.moviesListPrimary.isNotEmpty
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Card(
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(7),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(7),
-                              child: Image.network(
-                                "https://image.tmdb.org/t/p/w500/kAVRgw7GgK1CfYEJq8ME6EvRIgU.jpg",
-                                fit: BoxFit.cover,
-                                width: 150,
-                                height: 225,
-                              ),
+                          const Text(
+                            'Os mais populares',
+                            style: TextStyle(
+                              fontSize: 24,
                             ),
                           ),
-                          Positioned(
-                            bottom: 0,
-                            left: 15,
-                            child: Container(
-                              height: 50,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
-                                color: CustomColors.tmdbDarkBlue,
-                                border: Border.all(
-                                  color: CustomColors.tmdbLighterGreen,
-                                  width: 4,
-                                ),
-                              ),
-                              child: Center(
-                                  child: RichText(
-                                text: TextSpan(children: [
-                                  const TextSpan(
-                                    text: '98',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    child: Transform.translate(
-                                      offset: const Offset(2, -7),
-                                      child: const Text(
-                                        '%',
-                                        textScaleFactor: 0.5,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ]),
-                              )),
+                          ListMoviesWidget(
+                            homeController: homeController,
+                            scrollDirection: Axis.horizontal,
+                            moviesList: homeController.moviesListPrimary,
+                          ),
+                          const Text(
+                            'Os mais populares',
+                            style: TextStyle(
+                              fontSize: 24,
                             ),
                           ),
-                          Positioned(
-                              right: 10,
-                              top: 10,
-                              child: Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
-                                child: const Icon(
-                                  Icons.keyboard_control_sharp,
-                                  size: 30,
-                                ),
-                              )),
+                          ListMoviesWidget(
+                            homeController: homeController,
+                            scrollDirection: Axis.horizontal,
+                            moviesList: homeController.moviesListSecondary,
+                          ),
                         ],
-                      ),
-                    ),
-                    Text(
-                      formatterMovieTitle("Jurassic World: Fallen Kingdom"),
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(
-                      DateFormatter.formatDate("2022-07-06"),
-                      style: const TextStyle(
-                        color: CustomColors.tmdbGreyText,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Text(
-                'Os mais populares',
-                style: TextStyle(
-                  fontSize: 24,
-                ),
-              ),
-            ],
-          ),
+                      )
+                    : SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.9,
+                        child: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      );
+              }),
+            ),
+          ],
         ),
       ),
     );

@@ -20,13 +20,13 @@ abstract class _HomeControllerBase with Store {
   @action
   setMoviesPrimary(List<MovieModel> moviesListPopular) {
     moviesListPrimary.clear();
-    moviesListPrimary.addAll(moviesListPopular);
+    moviesListPrimary = moviesListPopular;
   }
 
   @action
   setMoviesSecondary(List<MovieModel> moviesListUpComing) {
     moviesListSecondary.clear();
-    moviesListSecondary.addAll(moviesListUpComing);
+    moviesListSecondary = moviesListUpComing;
   }
 
   @action
