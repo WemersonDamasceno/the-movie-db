@@ -1,6 +1,6 @@
 class Constants {
   // ignore: constant_identifier_names
-  static const String API_KEY = "6ee08abf792ae460668806133c782b4c";
+  static const String API_KEY = "API_KEY_HERE";
   // ignore: constant_identifier_names
   static const String BASE_API_URL = "https://api.themoviedb.org/3";
   // ignore: constant_identifier_names
