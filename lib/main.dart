@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'The Movies DB',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: "SourceSansPro",
         primaryColor: CustomColors.tmdbDarkBlue,
