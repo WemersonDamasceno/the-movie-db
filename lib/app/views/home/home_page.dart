@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
     );
     final secondaryList = await homeController.getMoviesByType(
       page: 1,
-      moviesType: MoviesType.upcoming,
+      moviesType: MoviesType.trending,
     );
 
     homeController.setMoviesPrimary(primaryList);
@@ -60,9 +60,10 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Os mais populares',
+                            'Os Mais Populares',
                             style: TextStyle(
                               fontSize: 24,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           ListMoviesWidget(
@@ -71,9 +72,10 @@ class _HomePageState extends State<HomePage> {
                             moviesList: homeController.moviesListPrimary,
                           ),
                           const Text(
-                            'Os mais populares',
+                            'Em Tendencia',
                             style: TextStyle(
                               fontSize: 24,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           ListMoviesWidget(

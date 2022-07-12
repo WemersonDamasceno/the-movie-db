@@ -23,13 +23,14 @@ class ListMoviesWidget extends StatelessWidget with HomePageMixin {
       child: ListView.builder(
           itemCount: moviesList.length,
           scrollDirection: scrollDirection,
+          physics: const BouncingScrollPhysics(),
           itemBuilder: (_, index) {
             final movie = moviesList[index];
             return ItemMovieWidget(
-              title: formatterTitle(movie.title!),
-              imageURL: movie.posterPath!,
-              voteAverage: formatterVoteAverage(movie.voteAverage!),
-              date: movie.releaseDate!,
+              title: formatterTitle(movie.title ?? ""),
+              imageURL: movie.posterPath ?? "",
+              voteAverage: formatterVoteAverage(movie.voteAverage ?? 0),
+              date: movie.releaseDate ?? "2022-06-29",
             );
           }),
     );

@@ -23,11 +23,11 @@ class ItemMovieWidget extends StatefulWidget {
 
 class _ItemMovieWidgetState extends State<ItemMovieWidget> {
   selectColorPercentIndicator(int voteAverage) {
-    if (voteAverage <= 80 && voteAverage > 70) {
+    if (voteAverage >= 70) {
       return Colors.green;
-    } else if (voteAverage <= 70 && voteAverage >= 50) {
+    } else if (voteAverage < 70 && voteAverage > 50) {
       return Colors.yellow;
-    } else if (voteAverage < 50 && voteAverage >= 20) {
+    } else if (voteAverage < 50 && voteAverage > 20) {
       return Colors.orange;
     } else {
       return Colors.red;
@@ -84,8 +84,7 @@ class _ItemMovieWidgetState extends State<ItemMovieWidget> {
                           selectColorPercentIndicator(widget.voteAverage),
                       backgroundColor: CustomColors.tmdbGrey,
                       fillColor: CustomColors.tmdbDarkBlue,
-                      center: Center(
-                          child: RichText(
+                      center: RichText(
                         text: TextSpan(children: [
                           TextSpan(
                             text: widget.voteAverage.toString(),
@@ -110,7 +109,7 @@ class _ItemMovieWidgetState extends State<ItemMovieWidget> {
                             ),
                           )
                         ]),
-                      )),
+                      ),
                     ),
                   ),
                 ),

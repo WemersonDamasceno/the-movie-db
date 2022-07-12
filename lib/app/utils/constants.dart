@@ -14,7 +14,9 @@ class Constants {
   static const upcomingMoviesURL =
       '$BASE_API_URL/movie/upcoming?api_key=$API_KEY';
 
-  static const topRated = '$BASE_API_URL/movie/upcoming?api_key=$API_KEY';
+  static const topRated = '$BASE_API_URL/movie/top_rated?api_key=$API_KEY';
 
   static const nowPlaying = '$BASE_API_URL/movie/now_playing?api_key=$API_KEY';
+
+  static const trending = '$BASE_API_URL/trending/movie/week?api_key=$API_KEY';
 }

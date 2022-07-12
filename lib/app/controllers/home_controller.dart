@@ -18,15 +18,15 @@ abstract class _HomeControllerBase with Store {
   List<MovieModel> searchMovieList = [];
 
   @action
-  setMoviesPrimary(List<MovieModel> moviesListPopular) {
+  setMoviesPrimary(List<MovieModel> moviesList) {
     moviesListPrimary.clear();
-    moviesListPrimary = moviesListPopular;
+    moviesListPrimary = moviesList;
   }
 
   @action
-  setMoviesSecondary(List<MovieModel> moviesListUpComing) {
+  setMoviesSecondary(List<MovieModel> moviesList) {
     moviesListSecondary.clear();
-    moviesListSecondary = moviesListUpComing;
+    moviesListSecondary = moviesList;
   }
 
   @action
@@ -45,8 +45,9 @@ abstract class _HomeControllerBase with Store {
       case MoviesType.nowPlaying:
         url = Uri.parse('${Constants.nowPlaying}&page=$page');
         break;
-      default:
-        url = Uri.parse('${Constants.upcomingMoviesURL}&page=$page');
+      case MoviesType.trending:
+        url = Uri.parse(Constants.trending);
+        break;
     }
     final response = await movieService.getMoviesByType(
       page: page,

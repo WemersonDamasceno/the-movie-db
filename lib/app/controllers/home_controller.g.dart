@@ -79,22 +79,22 @@ mixin _$HomeController on _HomeControllerBase, Store {
       ActionController(name: '_HomeControllerBase', context: context);
 
   @override
-  dynamic setMoviesPrimary(List<MovieModel> moviesListPopular) {
+  dynamic setMoviesPrimary(List<MovieModel> moviesList) {
     final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
         name: '_HomeControllerBase.setMoviesPrimary');
     try {
-      return super.setMoviesPrimary(moviesListPopular);
+      return super.setMoviesPrimary(moviesList);
     } finally {
       _$_HomeControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  dynamic setMoviesSecondary(List<MovieModel> moviesListUpComing) {
+  dynamic setMoviesSecondary(List<MovieModel> moviesList) {
     final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
         name: '_HomeControllerBase.setMoviesSecondary');
     try {
-      return super.setMoviesSecondary(moviesListUpComing);
+      return super.setMoviesSecondary(moviesList);
     } finally {
       _$_HomeControllerBaseActionController.endAction(_$actionInfo);
     }
