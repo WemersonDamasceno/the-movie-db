@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:the_movies_db/app/utils/constants.dart';
-import 'package:the_movies_db/app/utils/custom_colors.dart';
-import 'package:the_movies_db/app/utils/date_formatter.dart';
+import 'package:the_movies_db/app/core/const/constants_api.dart';
+import 'package:the_movies_db/app/core/utils/custom_colors.dart';
+import 'package:the_movies_db/app/core/utils/custom_styles.dart';
+import 'package:the_movies_db/app/core/utils/date_formatter.dart';
 
 class ItemMovieWidget extends StatefulWidget {
   final String title;
@@ -88,11 +89,7 @@ class _ItemMovieWidgetState extends State<ItemMovieWidget> {
                         text: TextSpan(children: [
                           TextSpan(
                             text: widget.voteAverage.toString(),
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: CustomStyles.stylePercentText,
                           ),
                           WidgetSpan(
                             child: Transform.translate(
@@ -100,11 +97,7 @@ class _ItemMovieWidgetState extends State<ItemMovieWidget> {
                               child: const Text(
                                 '%',
                                 textScaleFactor: 0.5,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: CustomStyles.stylePercentText,
                               ),
                             ),
                           )
@@ -139,16 +132,11 @@ class _ItemMovieWidgetState extends State<ItemMovieWidget> {
           ),
           Text(
             widget.title,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
+            style: CustomStyles.styleTextTitle,
           ),
           Text(
             DateFormatter.formatDate(widget.date),
-            style: const TextStyle(
-              color: CustomColors.tmdbGrey,
-            ),
+            style: CustomStyles.styleTextSubtitle,
           ),
         ],
       ),
