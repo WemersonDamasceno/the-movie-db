@@ -7,7 +7,7 @@ class CustomStyles {
     fontSize: 16,
   );
   static const stylePopupMenu = TextStyle(
-    fontSize: 13,
+    fontSize: 14,
   );
 
   static const styleTextSubtitle = TextStyle(
