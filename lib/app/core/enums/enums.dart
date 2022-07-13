@@ -5,3 +5,10 @@ enum MoviesType {
   nowPlaying,
   trending,
 }
+
+enum PopMenuValue {
+  addToAList,
+  addToFavorites,
+  addListIntersted,
+  addYourAvaliation,
+}

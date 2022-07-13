@@ -6,7 +6,7 @@ class HomePageMixin {
     return title;
   }
 
-  formatterVoteAverage(double voteAverage) {
+  formatterVoteAverage(voteAverage) {
     return int.parse((voteAverage * 10).toStringAsFixed(0));
   }
 }

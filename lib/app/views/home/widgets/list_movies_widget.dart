@@ -27,7 +27,7 @@ class ListMoviesWidget extends StatelessWidget with HomePageMixin {
           itemBuilder: (_, index) {
             final movie = moviesList[index];
             return ItemMovieWidget(
-              title: formatterTitle(movie.title ?? ""),
+              title: movie.title ?? "",
               imageURL: movie.posterPath ?? "",
               voteAverage: formatterVoteAverage(movie.voteAverage ?? 0),
               date: movie.releaseDate ?? "2022-06-29",

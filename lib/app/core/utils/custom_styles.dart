@@ -6,6 +6,9 @@ class CustomStyles {
     fontWeight: FontWeight.bold,
     fontSize: 16,
   );
+  static const stylePopupMenu = TextStyle(
+    fontSize: 14,
+  );
 
   static const styleTextSubtitle = TextStyle(
     color: CustomColors.tmdbGrey,
