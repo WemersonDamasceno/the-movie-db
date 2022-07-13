@@ -118,6 +118,7 @@ class _ItemMovieWidgetState extends State<ItemMovieWidget> with HomePageMixin {
         circularStrokeCap: CircularStrokeCap.round,
         lineWidth: 4,
         animation: true,
+        animationDuration: 3000,
         progressColor: selectColorPercentIndicator(widget.voteAverage),
         backgroundColor: CustomColors.tmdbGrey,
         fillColor: CustomColors.tmdbDarkBlue,
