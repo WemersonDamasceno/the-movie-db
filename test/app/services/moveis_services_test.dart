@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:the_movies_db/app/core/const/constants_api.dart';
 import 'package:the_movies_db/app/models/movie_model.dart';
-import 'package:the_movies_db/app/services/movies_service.dart';
-import 'package:the_movies_db/app/utils/constants.dart';
+import 'package:the_movies_db/app/services/implements/movies_service_implements.dart';
 
 void main() {
-  MoviesService movieService = MoviesService();
+  MoviesServiceImplements movieService = MoviesServiceImplements();
   setUp(() {
-    movieService = MoviesService();
+    movieService = MoviesServiceImplements();
   });
 
   group("Movies service", () {

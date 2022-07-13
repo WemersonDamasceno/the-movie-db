@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:the_movies_db/app/controllers/home_controller.dart';
-import 'package:the_movies_db/app/utils/enums.dart';
+import 'package:the_movies_db/app/core/enums/enums.dart';
+import 'package:the_movies_db/app/core/utils/custom_styles.dart';
 import 'package:the_movies_db/app/views/home/widgets/list_movies_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -61,10 +62,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           const Text(
                             'Os Mais Populares',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: CustomStyles.styleTextTopic,
                           ),
                           ListMoviesWidget(
                             homeController: homeController,
@@ -73,10 +71,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           const Text(
                             'Em Tendencia',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: CustomStyles.styleTextTopic,
                           ),
                           ListMoviesWidget(
                             homeController: homeController,

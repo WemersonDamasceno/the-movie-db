@@ -1,15 +1,16 @@
 import 'package:mobx/mobx.dart';
+import 'package:the_movies_db/app/core/const/constants_api.dart';
+import 'package:the_movies_db/app/core/enums/enums.dart';
 import 'package:the_movies_db/app/models/movie_model.dart';
-import 'package:the_movies_db/app/services/movies_service.dart';
-import 'package:the_movies_db/app/utils/constants.dart';
-import 'package:the_movies_db/app/utils/enums.dart';
+import 'package:the_movies_db/app/services/implements/movies_service_implements.dart';
 
 part 'home_controller.g.dart';
 
 class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
-  final movieService = MoviesService();
+  final movieService = MoviesServiceImplements();
+
   @observable
   List<MovieModel> moviesListPrimary = [];
   @observable

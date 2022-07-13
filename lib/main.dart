@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:the_movies_db/app/utils/custom_colors.dart';
+import 'package:the_movies_db/app/core/utils/custom_colors.dart';
 import 'package:the_movies_db/app/views/home/home_page.dart';
 
 void main() {
