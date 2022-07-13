@@ -1,9 +1,8 @@
+// ignore_for_file: constant_identifier_names
+
 class Constants {
-  // ignore: constant_identifier_names
   static const String API_KEY = "API_KEY_HERE";
-  // ignore: constant_identifier_names
   static const String BASE_API_URL = "https://api.themoviedb.org/3";
-  // ignore: constant_identifier_names
   static const String API_IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 
   static const searchMoviesURL = '$BASE_API_URL/search/movie?api_key=$API_KEY';
