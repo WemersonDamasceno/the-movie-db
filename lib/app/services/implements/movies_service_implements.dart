@@ -20,15 +20,13 @@ class MoviesServiceImplements implements MovieService {
             .toList();
         return Future.value({
           'movies': movies,
-          'message': "success",
-          'statusCode': 200,
+          'statusCode': response.statusCode,
         });
       }
     } catch (e) {
       return Future.value({
         'movies': [],
-        'message': "Não foi possível carregar os filmes",
-        'statusCode': 400,
+        'statusCode': response.statusCode,
       });
     }
   }
@@ -49,14 +47,13 @@ class MoviesServiceImplements implements MovieService {
         return Future.value({
           'movies': movies,
           'message': "success",
-          'statusCode': 200,
+          'statusCode': response.statusCode,
         });
       }
     } catch (e) {
       return Future.value({
         'movies': [],
-        'message': "Não foi possível carregar os filmes",
-        'statusCode': 400,
+        'statusCode': response.statusCode,
       });
     }
   }
